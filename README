@@ -1,0 +1,42 @@
+### Voicu Catalin Marian 332CC Tema2 APD ###
+
+# MyDispatcher.java
+
+Fisierul "MyDispatcher.java" contine implementarea unei clase care are rolul 
+de a transmite task-ul catre host in functie de ce politica de planificare 
+este folosita.
+
+Am luat un caz pentru fiecare politica si am creat implementarea necesara 
+pentru  politica respectiva, respectang cerinta temei. Iar dupa ce prelucrez
+fiecare nod in functie de caz, adaug un task pe acel nod.
+
+# MyHost.java
+
+Fisierul "MyHost.java" contine implementarea unei clase care are functiile
+necesare pentru a prelucra task-uri.
+
+Iau variabilele globale "running", "check_running" si "task_running".
+Creez coada de task-uri folosindu-ma de "LinkedList" ca sa pot adauga
+un task fie la inceputul cozii sau la sfarsitul cozii in functia "addTask".
+
+In functia "run" verific daca este un task in executie, daca este, astept
+timpul necesar pentru a-l rula, dupa care termin acel task, iar daca nu este 
+un task in executie modific variabilele "check_running" si "task_running".
+
+In functia "addTask" ordonez task-urile dupa prioritate si le
+adaug la inceputul cozii, respectiv la sfasitul cozii.
+
+In functia "getQueueSize" ma folosesc de variabila "check_running", daca
+aceasta este "1", returnez dimensiunea cozii + 1, pentru ca daca folosesc
+".size()", aceasta nu adauga si task-ul care se afla in rulare, pentru
+ca este scos din coada inainte sa isi inceapa rularea, iar daca
+"check_running" este "0" returnez doar dimensiunea cozii.
+
+In functia "getWorkLeft", ma folosesc de variabila "check_running", daca
+aceasta este "1", adaug la variabila "workLeft" si timpul ramas al 
+task-ului care se afla in rulare, folosindu-ma de variabila globala
+"task_running", adica task-ul care ruleaza in momentul respectiv.
+Apoi adaug lui "workLeft" si durata task-urilor ramase si o returnez.
+
+In functia "shutdown" setez variabila "running" pe "0", ca sa nu mai
+ruleze programul.
